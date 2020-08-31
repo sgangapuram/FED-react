@@ -1,6 +1,6 @@
 import React from 'react';
 import UserRow from './UserRow.js';
-const UserTable = ({level1, level2}) =>
+const UserTable = ({level1, level2, level3}) =>
   <table border="1">
     <thead>
       <tr>
@@ -11,6 +11,8 @@ const UserTable = ({level1, level2}) =>
     <tbody>
       <UserRow userList={level1} level="1"/>
       <UserRow userList={level2} level="2"/>
+      <UserRow userList={level3} level="3"/>
     </tbody>
   </table>;
+
 export default UserTable;
