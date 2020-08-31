@@ -1,38 +1,53 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import React from 'react';
 import './App.css';
-import { render } from '@testing-library/react';
-
-class App extends Component{
-render() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-header">
-          Welcome to React
-        </h1>
+import UserTable from './UserTable';
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      level1: [
+        {
+          name: 'Rod',
+          email: 'rod@abc.com'
+        },
+        {
+          name: 'Dave',
+          email: 'dave@def.com'
+        }
+      ],
+      level2: [
+        {
+          name: 'Bill',
+          email: 'bill@abc.com'
+        },
+        {
+          name: 'Bob',
+          email: 'bob@def.com'
+        }
+      ],
+      category: "Super Users"
+    }
+  }
+  render() {
+    return (
+      <>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          User Category: {this.state.category}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <Navbar dark color="primary">
-      <div className="container">
-        <NavbarBrand href="/">Ristorante con Fusion</NavbarBrand>
-        </div>
-        </Navbar>
-    </div>
-  );
+        <p>
+          <button onClick={() => {
+            // this.state.category = 'some new category';
+            this.setState( {category: 'Mega Super Users'} );
+          }}>
+            update state variable
+          </button>
+        </p>
+        <UserTable
+          level1={this.state.level1}
+          level2={this.state.level2}
+          random={123}
+        />
+      </>
+    );
+  }
 }
-}
-
-export default App;
