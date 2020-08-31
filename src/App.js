@@ -10,29 +10,16 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      level1: [
-        // {
-        //   name: 'Rod',
-        //   email: 'rod@abc.com'
-        // },
-        // {
-        //   name: 'Dave',
-        //   email: 'dave@def.com'
-        // }
-      ],
-      level2: [
-        // {
-        //   name: 'Bill',
-        //   email: 'bill@abc.com'
-        // },
-        // {
-        //   name: 'Bob',
-        //   email: 'bob@def.com'
-        // }
-      ],
+      level1: [],
+      level2: [],
       level3: [],
       category: "Super Users"
     }
+  }
+
+  updateUserEmail(index, newEmailAddress) {
+    console.log(index);
+    console.log(newEmailAddress);
   }
 
   componentDidMount() {
@@ -54,6 +41,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log(typeof (this.updateUserEmail));
     return (
       <>
         <p>
@@ -74,7 +62,7 @@ export default class App extends React.Component {
               level1={this.state.level1} 
               level2={this.state.level2} 
               level3={this.state.level3} 
-              random={123} 
+              userEmailUpdater={this.updateUserEmail}
             /> : 
             <p>no data to display</p>
         }
