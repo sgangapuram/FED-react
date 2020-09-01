@@ -5,26 +5,31 @@ userList.map((user, index) =>
       <tr key={index}>
         <td>{user.name}</td>
         <td>{user.email}</td>
+
         <td>
-            <input  id={`emailInput${level}${index}`} type="text" />
-            <button onClick={
-                     () => {
-                            userEmailUpdater(index, document
-                                .getElementById(`emailInput${level}${index}`)
-                                .value, level);
-                        }
-            }>update</button>
+            <input  
+            // id={`nameInput${level}${index}`}
+            type="text"
+            value={user.email}
+            onChange={
+                (event) => {
+                    userEmailUpdater(index, event.target.value, level);
+                    }         
+            }
+            />
         </td>
 
          <td>
-            <input  id={`nameInput${level}${index}`} type="text" />
-            <button onClick={
-                     () => {
-                        userNameUpdater(index, document
-                                .getElementById(`nameInput${level}${index}`)
-                                .value, level);
-                        }
-            }>update</button>
+            <input  
+            // id={`nameInput${level}${index}`}
+            type="text"
+            value={user.name}
+            onChange={
+                (event) => {
+                    userNameUpdater(index, event.target.value, level);
+                    }   
+            }
+            />
         </td>
       </tr>
     );
