@@ -2,11 +2,8 @@ import React from 'react';
 import './App.css';
 import UserTable from './UserTable';
 
-export default class App extends React.Component {  
-  
-  // console.log('does this work');
-  
-  constructor(props) {
+class App extends React.Component {  
+ constructor(props) {
     super(props);
 
     this.state = {
@@ -15,14 +12,39 @@ export default class App extends React.Component {
       level3: [],
       category: "Super Users"
     }
+    this.updateUserEmail = this.updateUserEmail.bind(this);
+    this.updateUserName = this.updateUserName.bind(this);
   }
 
-  updateUserEmail(index, newEmailAddress) {
-    console.log(index);
-    console.log(newEmailAddress);
+  // updateUserProp(index, level, newProp) {
+
+  //   const levelToChange = 'level' +level;
+  //   const newLevel = [...this.state[levelToChange]];
+  //   newLevel[index][propName] = newProp;
+
+  //   this.setState({[levelToChange]: newLevel});
+  // }
+
+  updateUserEmail(index, newEmailAddress, level) {
+
+    const levelToChange = 'level' +level;
+    const newLevel = [...this.state[levelToChange]];
+    newLevel[index].email = newEmailAddress;
+
+    this.setState({[levelToChange]: newLevel});
   }
 
-  componentDidMount() {
+  updateUserName(index, newName, level) {
+
+    const levelToChange = 'level' +level;
+    const newLevel = [...this.state[levelToChange]];
+    newLevel[index].name = newName;
+
+    this.setState({[levelToChange]: newLevel});
+  }
+
+
+   componentDidMount() {
     fetch('https://gorest.co.in/public-api/users')
     .then((response) => response.json())
     .then((json) => {
@@ -49,7 +71,6 @@ export default class App extends React.Component {
         </p>
         <p>
           <button onClick={() => {
-            // this.state.category = 'some new category';
             this.setState( {category: 'Mega Super Users'} );
           }}>
             update state variable
@@ -63,6 +84,7 @@ export default class App extends React.Component {
               level2={this.state.level2} 
               level3={this.state.level3} 
               userEmailUpdater={this.updateUserEmail}
+              userNameUpdater={this.updateUserName}
             /> : 
             <p>no data to display</p>
         }
@@ -71,3 +93,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;
