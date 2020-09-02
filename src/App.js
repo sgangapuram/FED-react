@@ -38,12 +38,10 @@ class App extends React.Component {
         level2: level2Users,
         level3: level3Users
       });
-
     });
   }
 
   render() {
-    console.log(typeof (this.updateUserProp));
     return (
       <>
         <p>

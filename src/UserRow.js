@@ -7,13 +7,30 @@ userList.map((user, index) =>
         <td>{user.email}</td>
 
         <td>
-            <input  id={`userProp${level}${index}`} type="text" />
-            <button onClick={
-                     () => {
-                       const propName = document.getElementById(`userProp${level}${index}`).value
-                        updateUserProp(index, level, document.getElementById(`userProp${level}${index}`).value);
-                        }
-            }>update</button>
+            <input  
+              onChange={
+                (event) => {
+                             updateUserProp(index, level, event.target.value);
+                          }
+              }
+              value={user.name} 
+              type="text" 
+              />
+              <input type="checkbox" onChange={
+                (event) => {
+                  console.log(event.target.checked);
+               }
+              }
+              />click here
+              <input  
+              onChange={
+                (event) => {
+                             updateUserProp(index, level, event.target.value);
+                          }
+              }
+              value={user.email} 
+              type="text" 
+              />
         </td>
       </tr>
     );
