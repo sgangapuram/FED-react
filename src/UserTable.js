@@ -1,23 +1,38 @@
 import React from 'react';
 import UserRow from './UserRow.js';
 
-const UserTable = ({level1, level2, level3, updateUserProp}) => //userEmailUpdater, userNameUpdater}) =>
-  <table border="1"
-  cellPadding="4"
-  cellSpacing="1"
-  bgcolor="cyan">
+const UserTable = (props) => <>
+  <table 
+    border="1" 
+    cellSpacing="1" 
+    cellPadding="4"
+  >
     <thead>
       <tr>
         <th>Name</th>
+        <th>Edit Name</th>
         <th>Email</th>
-        <th bgcolor="green">Edit Name/Email(include @ to be valid)</th>
+        <th>Edit Email</th>
       </tr>
     </thead>
     <tbody>
-      <UserRow userList={level1} level="1" updateUserProp ={updateUserProp} />
-      <UserRow userList={level2} level="2" updateUserProp ={updateUserProp} />
-      <UserRow userList={level3} level="3" updateUserProp ={updateUserProp} />
+      <UserRow 
+        userList={props.level1} 
+        level="1" 
+        userEmailUpdater={props.userEmailUpdater}
+        userNameUpdater={props.userNameUpdater}
+      />
+      <UserRow 
+        userList={props.level2} 
+        level="2" 
+        userEmailUpdater={props.userEmailUpdater} 
+        userNameUpdater={props.userNameUpdater}
+      />
     </tbody>
-  </table>;
+  </table>
+  <button onClick={() => {
+    props.stateUpdaterFunction('updated from child');
+  }}>update parent state variable</button>
+</>;
 
 export default UserTable;

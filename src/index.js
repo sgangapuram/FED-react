@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import * as serviceWorker from './serviceWorker';
 import HomePage from './HomePage';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-  <HomePage />
+    <HomePage/>
   </React.StrictMode>,
-  
   document.getElementById('root')
 );
 
@@ -17,5 +15,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-// registerserviceWorker();

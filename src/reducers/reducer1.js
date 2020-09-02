@@ -1,9 +1,7 @@
- const getCounter = (state) => state;
+const initialState = 0;
 
- const initialState = 0;
+function reducer1 (state = initialState) {
+  return state;
+}
 
- export default function counterReducer(state = initialState) {
-    return state;   
- }
- 
-//export default const counterReducer = (state = initialState) => state;
+export default reducer1;

@@ -1,5 +1,9 @@
-import {createStore} from 'redux';
-import counterReducer from '../reducers/reducer1';
+import { createStore } from 'redux';
+import reducer1 from '../reducers/reducer1';
 
+const store = createStore(reducer1);
 
-export default createStore(counterReducer/*comma sep list*/);
+console.log(store);
+console.log(store.getState());
+
+export default store;

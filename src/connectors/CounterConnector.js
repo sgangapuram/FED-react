@@ -1,11 +1,12 @@
-import {connect} from 'react-redux';
-import CounterDumbComponent from '../dumb-components/CounterDumbComponent';
+import { connect } from 'react-redux';
+import CounterDumbComponenet from '../dumb-components/CounterDumbComponenet';
 
-const mapStateToProps = (state) => {
-    
-    return {counter: state.counter }
+const mapStateToProps = (reduxStore) => {
+  console.log('in mapStateToProps, here is the redux store: ', reduxStore);
+  return {
+    counter: reduxStore,
+    hardCodedProperty: 'abc'
+  };
 }
 
-// const mapDispatchToProps = { , , }
-
-export default connect (mapStateToProps) (CounterDumbComponent);
+export default connect(mapStateToProps)(CounterDumbComponenet); //<CounterDumbComponent counter={0} hardCodedProperty='abc' /> 

@@ -1,9 +1,0 @@
-lifting state up
-props drilling
-can we make index.js as a component or is not possible as some default app naming conventions?
-modules--state
-even mstp is arbitrary and only thing we need is -----------connect function and what we are passing and returning there-------- 
-what is augument --CounterConnector
-
-arbitrary argument has entire state of that app / whole pie itself ---mapStateToProps--
-

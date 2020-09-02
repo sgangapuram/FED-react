@@ -2,26 +2,45 @@ import React from 'react';
 import './App.css';
 import UserTable from './UserTable';
 
-class App extends React.Component {  
- constructor(props) {
+export default class App extends React.Component {  
+  constructor(props) {
     super(props);
 
     this.state = {
       level1: [],
       level2: [],
-      level3: [],
       category: "Super Users"
     }
-    this.updateUserProp = this.updateUserProp.bind(this);
+
+    this.updateUserEmail = this.updateUserEmail.bind(this);
+    //this.updateUserName = this.updateUserName.bind(this);
   }
 
-  updateUserProp(index, level, newPropValue) {
-    const levelToChange = 'level' +level;
-    const newLevel = [...this.state[levelToChange]];
-    var propName = newPropValue.includes('@') ? 'email' : 'name';
-    newLevel[index][propName] = newPropValue;
+  updateUserEmail(index, newValue, level) {
+    const levelToUpdate = 'level'+level;
+    const newLevel = [ ...this.state[levelToUpdate] ];
+    newLevel[index].email = newValue; 
+ 
+    this.setState({
+      [levelToUpdate]: newLevel
+    });
+  }
 
-    this.setState({[levelToChange]: newLevel});
+  //updateUserName (index, newValue, level) {
+  updateUserName = (index, newValue, level) => {
+    const levelToUpdate = 'level'+level;
+    const newLevel = [ ...this.state[levelToUpdate] ];
+    newLevel[index].name = newValue;
+ 
+    this.setState({
+      [levelToUpdate]: newLevel
+    });
+  }
+
+  changeCategory = (newCategory) => {
+    this.setState({
+      category: newCategory
+    });
   }
 
   componentDidMount() {
@@ -31,13 +50,12 @@ class App extends React.Component {
 
       const level1Users = json.data.slice(0, 5);
       const level2Users = json.data.slice(5, 10);
-      const level3Users = json.data.slice(10, 15);
 
       this.setState({
         level1: level1Users,
-        level2: level2Users,
-        level3: level3Users
+        level2: level2Users
       });
+
     });
   }
 
@@ -49,25 +67,24 @@ class App extends React.Component {
         </p>
         <p>
           <button onClick={() => {
-            this.setState( {category: 'Mega Super Users'} );
+            this.changeCategory('Mega Super Users');
           }}>
-            update state variable
+            update local state variable
           </button>
         </p>
+
         {
           (this.state.level1.length > 0) ?
             <UserTable 
               level1={this.state.level1} 
               level2={this.state.level2} 
-              level3={this.state.level3} 
-              updateUserProp={this.updateUserProp}
+              stateUpdaterFunction={this.changeCategory}
+              userEmailUpdater={this.updateUserEmail}
+              userNameUpdater={this.updateUserName}
             /> : 
             <p>no data to display</p>
         }
-
       </>
     );
   }
 }
-
-export default App;
