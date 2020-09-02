@@ -12,39 +12,19 @@ class App extends React.Component {
       level3: [],
       category: "Super Users"
     }
-    this.updateUserEmail = this.updateUserEmail.bind(this);
-    this.updateUserName = this.updateUserName.bind(this);
+    this.updateUserProp = this.updateUserProp.bind(this);
   }
 
-  // updateUserProp(index, level, newProp) {
-
-  //   const levelToChange = 'level' +level;
-  //   const newLevel = [...this.state[levelToChange]];
-  //   newLevel[index][propName] = newProp;
-
-  //   this.setState({[levelToChange]: newLevel});
-  // }
-
-  updateUserEmail(index, newEmailAddress, level) {
-
+  updateUserProp(index, level, newPropValue) {
     const levelToChange = 'level' +level;
     const newLevel = [...this.state[levelToChange]];
-    newLevel[index].email = newEmailAddress;
+    var propName = newPropValue.includes('@') ? 'email' : 'name';
+    newLevel[index][propName] = newPropValue;
 
     this.setState({[levelToChange]: newLevel});
   }
 
-  updateUserName(index, newName, level) {
-
-    const levelToChange = 'level' +level;
-    const newLevel = [...this.state[levelToChange]];
-    newLevel[index].name = newName;
-
-    this.setState({[levelToChange]: newLevel});
-  }
-
-
-   componentDidMount() {
+  componentDidMount() {
     fetch('https://gorest.co.in/public-api/users')
     .then((response) => response.json())
     .then((json) => {
@@ -63,7 +43,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(typeof (this.updateUserEmail));
+    console.log(typeof (this.updateUserProp));
     return (
       <>
         <p>
@@ -76,15 +56,13 @@ class App extends React.Component {
             update state variable
           </button>
         </p>
-
         {
           (this.state.level1.length > 0) ?
             <UserTable 
               level1={this.state.level1} 
               level2={this.state.level2} 
               level3={this.state.level3} 
-              userEmailUpdater={this.updateUserEmail}
-              userNameUpdater={this.updateUserName}
+              updateUserProp={this.updateUserProp}
             /> : 
             <p>no data to display</p>
         }
