@@ -1,3 +1,5 @@
+![first-react-redux-state-store-app](https://github.com/sgangapuram/fed-react/blob/master/first-react-redux.PNG)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 `welcome to react world!!`
 
