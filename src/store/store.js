@@ -6,7 +6,8 @@ const rootReducer  = combineReducers({reducer1, reducer2});
 
 const store = createStore(rootReducer);
 
-console.log(store);
+// console.log(store);
+console.log('SG');
 console.log(store.getState());
 
 export default store;

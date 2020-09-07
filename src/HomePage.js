@@ -8,8 +8,8 @@ import {
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import WhatEverAliasConnector from './connectors/Page2Connector';
 import CounterConnector from './connectors/CounterConnector';
+import Page2Connector from './connectors/Page2Connector';
 
 const HomePage = () => <>
  <Provider store={store}>
@@ -22,7 +22,7 @@ const HomePage = () => <>
           <CounterConnector /> 
       </Route>
       <Route path='/page2'>
-        <WhatEverAliasConnector />
+        <Page2Connector />
       </Route>
       <Route path="/" exact={false}>
         <App />

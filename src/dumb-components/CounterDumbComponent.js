@@ -7,7 +7,9 @@ const CounterDumbComponent = ({counter, dispatchIncrementCounterAction, dispatch
                 dispatchIncrementCounterAction();
             }    
      }>Increment</button>
+
      counter: {counter} 
+     
      <button onClick= {
          ()=>{console.log('decreased store by 1');
                  dispatchDecrementCounterAction();

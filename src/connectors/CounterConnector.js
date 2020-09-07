@@ -9,7 +9,6 @@ const mapStateToProps = (reduxStore) => {
   };
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   console.log('CounterConnector: mapStateToProps: dispatch is a ', typeof dispatch);
   return {
